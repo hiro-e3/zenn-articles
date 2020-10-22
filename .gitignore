@@ -1,3 +1,6 @@
 node_modules
 package*.json
 .vscode
+bin
+obj
+.ionide
