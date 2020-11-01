@@ -4,3 +4,4 @@ package*.json
 bin
 obj
 .ionide
+.vs
