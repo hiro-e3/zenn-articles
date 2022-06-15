@@ -10,7 +10,7 @@ published: true
 
 現状、まだプレビュー機能ですが[コンピュテーション式](https://docs.microsoft.com/ja-jp/dotnet/fsharp/language-reference/computation-expressions)のカスタム演算(Custom Operation)のオーバーロードが可能になりました。F#5.0の新機能を試すのと、コンピュテーション式の学習も兼ねてWPFのViewにあたる部分をXAMLではなくコード上で書くようなものをやってみたいと思います。
 
-``` fsharp : Main module
+```fsharp : Main module
 module Main =
     open Builder // 各ビルダークラスのインスタンスを定義
     open Elmish
@@ -88,7 +88,7 @@ module Main =
 コンピュテーション式は`Bind`や`Return`など特有のメソッドを持つクラスのインスタンスを使用して、モナドやDSLなどの表現ができるF#の機能の一つです。慣例的に`...Builder`という名前が付けられることが多い印象(Builderパターンが由来？)ですが、命名規則から外れていてもコンピュテーション式の構文は使うことは可能です。
 その慣例に従って、コンピュテーション式に用いるクラスをBuilderクラスと呼称しています。
 
-``` fsharp
+```fsharp
 type SampleBuilder() =   
     member __.Bind(m,f) =
         printfn "Call Bind method %A" m 
@@ -131,7 +131,7 @@ let a = sample.Bind(100, fun a ->
 各キーワードに対してどの名称のメソッドが呼び出されるのかについての詳細は[MS Docs](https://docs.microsoft.com/ja-jp/dotnet/fsharp/language-reference/computation-expressions#creating-a-new-type-of-computation-expression)で確認していただければと思います。
 
 ## カスタム演算(Custom Operation)の実装
-``` fsharp
+```fsharp
 type Expression =
     | Normal
     | Laugh
@@ -188,7 +188,7 @@ printfn "%A" page1
 基本的には各プロパティに値を代入する行為をカスタムキーワードでラップしているだけなので、かいつまんで書きたいと思います。
 
 ## System.Windows.Window
-``` fsharp 
+```fsharp 
 type FrameworkElementBuilder() =
     [<CustomOperation("binding")>]
     member __.SetBinding(element : 'T when 'T :> FrameworkElement, propertyName : string, bindingName : string, ?updateSource : UpdateSourceTrigger) =
@@ -266,7 +266,7 @@ Builderクラスの継承関係は各コントロールの継承関係と対応�
 Bindingの設定に用いる`DependencyProperty`をフィールド名称から取得して設定しているのはあまりスマートじゃない感があるので他にいい方法があればいいのですが。基本的に`TextBox.TextProperty`というような長さなのでXAMLの`Text="{Binding ...}"`を同じ書き味でできれば一番ベストなんですけども。DP用のModuleを定義してその中に列挙するぐらい？
 
 ## Grid
-``` fsharp
+```fsharp
 type GridBuilder() =
     inherit PanelBuilder()
     let mutable currentRow = 0
@@ -316,7 +316,7 @@ XAMLでGridの設定を書いている時にあまり嬉しくなかったのが
 
 例えば、2行2列のGridを用意してそこにコントロールを配置する場合
 
-``` xml : XAML
+```xml : XAML
 <Grid>
     <Grid.RowDefinitions>
         <RowDefinition />
@@ -335,7 +335,7 @@ XAMLでGridの設定を書いている時にあまり嬉しくなかったのが
 
 このようになります。個人的にはHTMLのTableタグっぽく書けた方が嬉しいと思い、はじめに記した形にしましたが、コンピュテーション式の実装を変更することで、如何様にもオレオレ記法を用意することが可能です。
 
-``` fsharp
+```fsharp
 grid { 
     tr
     td (txtblock { text "Row 0 Column 0" })
