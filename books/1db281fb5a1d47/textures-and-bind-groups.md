@@ -277,7 +277,7 @@ render_pass.draw_indexed(0..self.num_indices, 0, 0..1);
 ```
 
 ## Pipeline Layout
-[パイプラインの章](/books/1db281fb5a1d47/pipeline%252Emd)で作成した`PipelineLayout`を覚えていますか？ やっと使えるようになりました。`PipelineLayout`には、パイプラインが使用できる`BindGroupLayout`のリストが含まれています。`render_pipeline_layout` を修正して `texture_bind_group_layout` を使用するようにします。
+[パイプラインの章](/books/1db281fb5a1d47/viewer/pipeline%252Emd)で作成した`PipelineLayout`を覚えていますか？ やっと使えるようになりました。`PipelineLayout`には、パイプラインが使用できる`BindGroupLayout`のリストが含まれています。`render_pipeline_layout` を修正して `texture_bind_group_layout` を使用するようにします。
 
 ```rust
 async fn new(...) {
