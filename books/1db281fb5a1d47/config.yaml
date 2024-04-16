@@ -1,0 +1,13 @@
+title: "Learn Wgpu(ja)"
+summary: "Learn Wgpuの非公式日本語訳です"
+topics: ["rust", "wgpu", "webgpu"]
+published: false
+price: 0 # 有料の場合200〜5000
+# 本に含めるチャプターを順番に並べましょう
+chapters:
+  - intro
+  - dependencies-and-window
+  - surface
+  - pipeline
+  - buffer-and-indices
+  - textures-and-bind-groups
