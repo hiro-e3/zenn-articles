@@ -11,4 +11,4 @@ chapters:
   - pipeline
   - buffer-and-indices
   - textures-and-bind-groups
-#  - uniforms
+  - uniforms
