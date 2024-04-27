@@ -12,7 +12,7 @@ title: "テクスチャとバインドグループ"
 ![](https://sotrh.github.io/learn-wgpu/assets/img/happy-tree.bdff8a19.png)
 木を読み込むために、[image crate](https://crates.io/crates/image)を使用します。依存関係へ追加してみましょう。
 
-```Cargo.toml:toml
+```toml:Cargo.toml
 [dependencies.image]
 version = "0.24"
 default-features = false
@@ -277,7 +277,7 @@ render_pass.draw_indexed(0..self.num_indices, 0, 0..1);
 ```
 
 ## Pipeline Layout
-[パイプラインの章](/books/1db281fb5a1d47/viewer/pipeline%252Emd)で作成した`PipelineLayout`を覚えていますか？ やっと使えるようになりました。`PipelineLayout`には、パイプラインが使用できる`BindGroupLayout`のリストが含まれています。`render_pipeline_layout` を修正して `texture_bind_group_layout` を使用するようにします。
+[パイプラインの章](pipeline)で作成した`PipelineLayout`を覚えていますか？ やっと使えるようになりました。`PipelineLayout`には、パイプラインが使用できる`BindGroupLayout`のリストが含まれています。`render_pipeline_layout` を修正して `texture_bind_group_layout` を使用するようにします。
 
 ```rust
 async fn new(...) {

@@ -3,6 +3,7 @@ title: "Introduction"
 ---
 
 本書は[Learn Wgpu](https://sotrh.github.io/learn-wgpu/)の非公式日本語訳です。
+https://sotrh.github.io/learn-wgpu/
 
 ## wgpuとは？
 [wgpu](https://github.com/gfx-rs/wgpu)は[WebGPU API](https://gpuweb.github.io/gpuweb/)仕様のRust実装です。WebGPUは、GPU for the Web Community Groupによって公開された仕様です。Webコードが安全で信頼性の高い方法でGPU機能にアクセスできるようにすることを目的としています。これはVulkan APIを模倣し、ホストハードウェアが使用しているAPI（DirectX、Metal、Vulkanなど）に変換することで実現されています。
